@@ -11,9 +11,10 @@
 <body>
   <h1>TodoList</h1>
   <form action="/create" method="POST">
-    <input type="text" name="name"><input type="button" value="追加">
+    @csrf
+    <input type="text" name="name"><input type="submit" value="追加">
   </form>
-  @csrf
+
   <table>
     <tr>
       <th>作成日</th>

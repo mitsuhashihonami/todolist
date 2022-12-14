@@ -17,8 +17,8 @@ class TodolistController extends Controller
 
     public function create(TodolistRequest $request)
     {
-        $form= $request->input('name');
-        Todolist::create($form);
+        $form= $request->all();
+        dd($form);
         return redirect('/');
     }
 }
