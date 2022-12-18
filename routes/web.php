@@ -17,3 +17,5 @@ use App\Http\Controllers\TodolistController;
 
 Route::get('/', [TodolistController::class, 'index']);
 Route::post('/create', [TodolistController::class, 'create']);
+Route::post('/update/{id}', [TodolistController::class, 'update']);
+Route::post('/delete/{id}', [TodolistController::class, 'delete']);
