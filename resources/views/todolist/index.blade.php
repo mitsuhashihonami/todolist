@@ -13,6 +13,7 @@
     body {
       background-color: #2d197c;
       position: relative;
+      font-size: large;
     }
 
     .card {
@@ -32,20 +33,47 @@
     td {
       padding: 0 15px;
     }
-    .ttl{
 
-    }
+    .ttl {}
 
     .create {
       width: 500px;
       height: 30px;
+    }
+
+    .tuika {
+      width: 50px;
+      border-color: #dc70fa;
+      color: #dc70fa;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 5px;
+      margin-left: 30px;
+    }
+
+    .kousinn {
+      width: 50px;
+      border-color: #fa9770;
+      color: #fa9770;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+    .sakujyo {
+      width: 50px;
+      border-color: #71fadc;
+      color: #71fadc;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 5px;
     }
   </style>
   <div class="card">
     <h1 class="ttl">TodoList</h1>
     <form action="/create" method="POST">
       @csrf
-      <input type="text" name="name" class="create"><input type="submit" value="追加">
+      <input type="text" name="name" class="create"><input type="submit" class="tuika" value="追加">
     </form>
     @if (count($errors) > 0)
     <ul>
@@ -65,14 +93,14 @@
       @foreach($todos as $todo)
       <tr>
         <td>{{$todo->created_at}}</td>
-        <form action="/update/{id},$todo->id" method="POST">
+        <form action="/update/{{$todo->id}}" method="POST">
           @csrf
           <td><input type="text" name="name" value="{{$todo->name}}"></td>
-          <td><input type="submit" value="更新"></td>
+          <td><button type="submit" class="kousinn">更新</button></td>
         </form>
-        <form action="/delete/{id},$todo->id" method="POST">
+        <form action="/delete/{{$todo->id}}" method="POST">
           @csrf
-          <td><input type="submit" value="削除"></td>
+          <td><button type="submit" class="sakujyo">削除</button></td>
         </form>
       </tr>
       @endforeach
